@@ -1,6 +1,6 @@
 # simple-node-pnpm-setup
 
-This action sets up Node.js and pnpm then installs dependencies.
+This action sets up Node.js and pnpm then installs/caches dependencies.
 
 ## Requirements
 
