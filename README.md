@@ -1,5 +1,7 @@
 # simple-node-pnpm-setup
 
+This action sets up Node.js and pnpm then installs dependencies.
+
 ## Requirements
 
 - Have node version defined in `package.json` in engines section
@@ -13,8 +15,9 @@
 ## Usage
 
 ```
-     steps:
-       - uses: coingaming/simple-node-pnpm-setup@v1
-         with:
-           npm_token: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - name: 'Install Node.js and pnpm and dependencies'
+        uses: coingaming/simple-node-pnpm-setup@v1
+        with:
+          npm_token: ${{ secrets.NPM_TOKEN }}
 ```
