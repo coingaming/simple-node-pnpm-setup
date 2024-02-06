@@ -16,7 +16,7 @@ This action sets up Node.js and pnpm then installs dependencies.
 
 ```
     steps:
-      - name: 'Install Node.js and pnpm and dependencies'
+      - name: 'Install Node.js, pnpm and dependencies'
         uses: coingaming/simple-node-pnpm-setup@v1
         with:
           npm_token: ${{ secrets.NPM_TOKEN }}
