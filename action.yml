@@ -15,10 +15,12 @@ runs:
       with:
         node-version-file: "package.json"
         cache: "pnpm"
-    - name: Test versions
-      shell: bash
-      run: node --version && pnpm --version
     - run: echo "//registry.npmjs.org/:_authToken=${{ inputs.npm_token }}" >> .npmrc
       shell: bash
     - run: pnpm install --frozen-lockfile --strict-peer-dependencies
       shell: bash
+    - name: Cache Cypress Binary
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/Cypress
+        key: binary-${{ hashFiles('package-lock.json') }}
