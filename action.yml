@@ -1,0 +1,24 @@
+name: "simple-node-pnpm-setup"
+description: "Sets up a pnpm/node environment with a cache"
+
+inputs:
+  npm_token:
+    description: "The NPM token to use for authentication"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v4
+    - uses: pnpm/action-setup@v2
+    - uses: actions/setup-node@v4
+      with:
+        node-version-file: "package.json"
+        cache: "pnpm"
+    - name: Test versions
+      shell: bash
+      run: node --version && pnpm --version
+    - run: echo "//registry.npmjs.org/:_authToken=${{ inputs.npm_token }}" >> .npmrc
+      shell: bash
+    - run: pnpm install --frozen-lockfile --strict-peer-dependencies
+      shell: bash
